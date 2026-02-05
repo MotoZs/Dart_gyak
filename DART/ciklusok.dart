@@ -1,10 +1,12 @@
+import 'dart:ffi';
 import 'dart:io';
 
 void main() {
   //elso();
   //masodik();
   //harmadik();
-  negyes();
+  //negyes();
+  reverseInteger(246);
 }
 
 void elso() {
@@ -67,6 +69,21 @@ void negyes() {
   print("Szám:");
   String a = stdin.readLineSync()!;
   for (int i = 0; i < a.length; i++) {
-    a[0];  
+    a[0];
   }
+}
+
+void reverseInteger(a) {
+  List<String> b = [];
+  String d = a.toString();
+  for (int i = 0; i < d.length; i++) {
+    b.add(d[i]);
+  }
+  print(b);
+
+  List<String> c = [];
+  for (int i = b.length; i > 0; i--) {
+    c.add(b[i]);
+  }
+  print(c);
 }
