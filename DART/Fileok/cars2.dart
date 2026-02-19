@@ -8,7 +8,7 @@ class FileMissingException implements Exception {
 }
 void main() {
   try {
-    File file = File("C:\\Users\\b1papzso\\DART\\Fileok\\cars2.txt");
+    File file = File("C:\\Users\\b1papzso\\Dart_gyak\\DART\\Fileok\\cars2.txt");
     file.writeAsStringSync('\nMeg ujabb auto!!!!!!!', mode: FileMode.append);
     String content = file.readAsStringSync();
     
