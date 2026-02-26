@@ -64,9 +64,9 @@ void main() {
   List<int> NRszamok = [0, 0, 0];
   for (var i = 0; i < 30; i++) {
     int index = i ~/ 10;
-    PLszamok[index] += osszes("PL", i + 1, rendelesek);
-    TVszamok[index] += osszes("TV", i + 1, rendelesek);
-    NRszamok[index] += osszes("NR", i + 1, rendelesek);
+    PLszamok[index] += osszes("PL", i + 1, rendelesek, 1);
+    TVszamok[index] += osszes("TV", i + 1, rendelesek, 1);
+    NRszamok[index] += osszes("NR", i + 1, rendelesek, 1);
   }
   kimenet += "PL:\t${PLszamok[0]}\t${PLszamok[1]}\t${PLszamok[2]}\n";
   kimenet += "TV:\t${TVszamok[0]}\t${TVszamok[1]}\t${TVszamok[2]}\n";
@@ -76,11 +76,20 @@ void main() {
   kampany.writeAsStringSync(kimenet);
 }
 
-int osszes(String varos, int nap, List<Map<String, dynamic>> rendelsek) {
+int osszes(
+  String varos,
+  int nap,
+  List<Map<String, dynamic>> rendelsek, [
+  int verzio = 0,
+]) {
   int eredmeny = 0;
   rendelsek.forEach((rendeles) {
     if (rendeles["tipus"] == varos && rendeles["nap"] == nap) {
-      eredmeny ++;
+      if (verzio == 0) {
+        eredmeny += rendeles["mennyiseg"] as int;
+      } else {
+        eredmeny++;
+      }
     }
   });
   return eredmeny;
